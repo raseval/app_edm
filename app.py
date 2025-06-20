@@ -10,6 +10,8 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import gdown
 import zipfile
 import os
+import shutil
+
 
 
 MODEL_ID = "19xMQlN-8_37fXixm1DuazPWI0ORJx9Xj" 
@@ -19,8 +21,11 @@ if not os.path.exists("modelo"):
     url = f"https://drive.google.com/uc?id={MODEL_ID}"
     gdown.download(url, ZIP_NAME, quiet=False, use_cookies=True)
 
-    # Verifica si el archivo es un zip válido
     if zipfile.is_zipfile(ZIP_NAME):
+        # Eliminar carpeta existente si ya hay una anterior incompleta
+        if os.path.exists("modelo"):
+            shutil.rmtree("modelo")
+
         with zipfile.ZipFile(ZIP_NAME, 'r') as zip_ref:
             zip_ref.extractall("modelo")
     else:
