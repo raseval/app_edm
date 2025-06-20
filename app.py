@@ -63,7 +63,7 @@ encoder_sector, encoder_postal = load_encoders()
 # ---- Carga del modelo ----
 @st.cache_resource
 def load_model():
-    return TabularPredictor.load(modelo_path)
+    return TabularPredictor.load(modelo_path, require_py_version_match=False)
 
 predictor = load_model()
 
