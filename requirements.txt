@@ -1,0 +1,7 @@
+streamlit
+pandas
+autogluon
+scikit-learn
+seaborn
+matplotlib
+gdown
