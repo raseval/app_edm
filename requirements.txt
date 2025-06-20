@@ -5,4 +5,3 @@ scikit-learn
 seaborn
 matplotlib
 gdown
-shutil
