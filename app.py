@@ -19,9 +19,12 @@ ZIP_NAME = "modelo.zip"
 if not os.path.exists("modelo"):
     url = f"https://drive.google.com/uc?id={MODEL_ID}"
     gdown.download(url, ZIP_NAME, quiet=False, use_cookies=True)
+
     if zipfile.is_zipfile(ZIP_NAME):
+        # Eliminar carpeta existente si ya hay una anterior incompleta
         if os.path.exists("modelo"):
             shutil.rmtree("modelo")
+
         with zipfile.ZipFile(ZIP_NAME, 'r') as zip_ref:
             zip_ref.extractall("modelo")
     else:
